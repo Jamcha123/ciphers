@@ -5,7 +5,7 @@ Python-cipher is a book cipher write in python
 How to use:
 
         git clone https://github.com/Jamcha123/ciphers
-        cd /ciphers/python-cipher
+        cd /cipher/python-cipher
 
 then run:
     
