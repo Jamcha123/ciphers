@@ -1,15 +1,15 @@
-#python-cipher
+#book-cipher
 
-Python-cipher is a book cipher write in python
+book-cipher is a book cipher write in python
 
 How to use:
 
         git clone https://github.com/Jamcha123/ciphers
         cd ciphers
-        cd python-cipher
+        cd book-cipher
 
 then run:
     
-    python3 books.py <replace with text file name>
+    python3 books.py books.txt
 
 and then it generate a cipher text file with the indices of the line and word placement.
