@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CipherHub</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu" />
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeeQswqAAAAALGqg_L4fM6c-IneR6IFZb8tZ3KD"></script>
+    <script type="module" src="./fire.js"></script>
+    <script>
+      function onClick(e) {
+        e.preventDefault();
+        grecaptcha.enterprise.ready(async () => {
+          const token = await grecaptcha.enterprise.execute('6LeeQswqAAAAALGqg_L4fM6c-IneR6IFZb8tZ3KD', {action: 'LOGIN'});
+        });
+      }
+    </script>
+  </head>
+  <body class="bg-slate-900">
+    <div id="root" class="relative w-[100%] h-[100%] m-auto p-[0] bg-transparent "></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
