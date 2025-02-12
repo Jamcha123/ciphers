@@ -1,7 +1,7 @@
 #RSA 
 
 RSA is the private-public key encryption algorithm.
-My program using ECDH or the Elliptic-curve Diffie–Hellman protocol.
+My program uses pkcs1 and pkcs10 to generate a private and public key 
 
 I am using the nodejs crypto library. 
 
