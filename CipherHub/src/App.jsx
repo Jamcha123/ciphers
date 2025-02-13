@@ -69,7 +69,7 @@ function AddNavBar(){
   const [active, setActive] = useState(false); 
   return(
     <div className="fixed w-[100%] h-[100%] m-auto p-[0] bg-transparent z-[200] flex flex-col align-middle justify-center text-center translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%] ">
-      <nav className="relative w-[100%] min-h-[5vh] max-h-[30vh] m-auto p-[0] flex flex-row align-middle justify-center text-center z-[99] ">
+      <nav className="relative w-[100%] min-h-[5vh] max-h-[30vh] m-auto p-[0] flex flex-col align-middle justify-center text-center z-[100] ">
         <div className="flex flex-row align-middle justify-center text-center min-h-[5vh] min-w-[100%]">
           <ul className="flex flex-row align-middle justify-center text-center min-h-[100%] min-w-[25%] md:min-w-[50%] lg:min-w-[75%] ">
             <div className="relative w-[fit-content] h-[100%] m-auto p-[0] flex lg:hidden flex-col align-middle justify-center text-center">
@@ -81,10 +81,13 @@ function AddNavBar(){
               <li className="text-2xl text-white"><a href="#item1">About CipherHub</a></li>
             </div>
             <div className="relative w-[fit-content] h-[100%] m-auto p-[0] hidden lg:flex flex-col align-middle justify-center text-center ">
-              <li className="text-2xl text-white"><a href="#item2">AES Encryption</a></li>
+              <li className="text-2xl text-white"><a href="#item2">Api Docs</a></li>
             </div>
             <div className="relative w-[fit-content] h-[100%] m-auto p-[0] hidden lg:flex flex-col align-middle justify-center text-center ">
-              <li className="text-2xl text-white"><a href="#item3">RSA Encryption</a></li>
+              <li className="text-2xl text-white"><a href="#item3">AES Encryption</a></li>
+            </div>
+            <div className="relative w-[fit-content] h-[100%] m-auto p-[0] hidden lg:flex flex-col align-middle justify-center text-center ">
+              <li className="text-2xl text-white"><a href="#item4">RSA Encryption</a></li>
             </div>
           </ul>
           <ul className="flex flex-col align-middle justify-center text-center min-h-[100%] min-w-[75%] md:min-w-[50%] lg:min-w-[25%] ">
@@ -96,9 +99,26 @@ function AddNavBar(){
             </div>
           </ul>
         </div>
-        <motion.div initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 1}}></motion.div>
-        <motion.div initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 2}}></motion.div>
-        <motion.div initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 1}}></motion.div>
+        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 1}}>
+          <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
+            <li className="text-2xl text-white list-none "><a href="#item1">About CipherHub</a></li>
+          </div>
+        </motion.div>
+        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 2}}>
+          <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
+            <li className="text-2xl text-white list-none "><a href="#item2">Api Docs</a></li>
+          </div>
+        </motion.div>
+        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 1}}>
+          <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
+            <li className="text-2xl text-white list-none "><a href="#item3">AES Encryption</a></li>
+          </div>
+        </motion.div>
+        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 2}}>
+          <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
+            <li className="text-2xl text-white list-none "><a href="#item4">RSA Encryption</a></li>
+          </div>
+        </motion.div>
       </nav>
       <div className="w-[100%] h-[95vh] m-auto p-[0] relative "></div>
     </div>
@@ -111,16 +131,16 @@ function AddMain(){
         <h1 className="text-4xl text-white ">CipherHub</h1>
         <h1 id="plain" className="text-3xl text-white mt-[2%] ">Ciphers and Encryption</h1>
       </motion.section>
-      <motion.section initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item1" initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 
       </motion.section>
-      <motion.section initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item2" initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 
       </motion.section>
-      <motion.section initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item3" initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 
       </motion.section>
-      <motion.section initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item4" initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 
       </motion.section>
     </div>
