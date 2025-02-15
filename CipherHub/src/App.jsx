@@ -5,6 +5,9 @@ import {motion} from 'framer-motion'
 import crypto from 'crypto'
 import * as THREE from 'three'
 import git from './assets/git.svg'
+import {getFunctions, httpsCallable} from 'firebase/functions'
+
+httpsCallable(getFunctions())
 
 function AddTHREE(){
   useEffect(() => {
@@ -81,7 +84,7 @@ function AddNavBar(){
               <li className="text-2xl text-white"><a href="#item1">About CipherHub</a></li>
             </div>
             <div className="relative w-[fit-content] h-[100%] m-auto p-[0] hidden lg:flex flex-col align-middle justify-center text-center ">
-              <li className="text-2xl text-white"><a href="#item2">Api Docs</a></li>
+              <li className="text-2xl text-white"><a href="#item2">HMAC Hashes</a></li>
             </div>
             <div className="relative w-[fit-content] h-[100%] m-auto p-[0] hidden lg:flex flex-col align-middle justify-center text-center ">
               <li className="text-2xl text-white"><a href="#item3">AES Encryption</a></li>
@@ -106,7 +109,7 @@ function AddNavBar(){
         </motion.div>
         <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 2}}>
           <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
-            <li className="text-2xl text-white list-none "><a href="#item2">Api Docs</a></li>
+            <li className="text-2xl text-white list-none "><a href="#item2">Hmac Hashes</a></li>
           </div>
         </motion.div>
         <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 1}}>
@@ -127,20 +130,39 @@ function AddNavBar(){
 function AddMain(){
   return(
     <div className="relative w-[100%] h-[100%] m-auto p-[0] bg-transparent ">
-      <motion.section initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
-        <h1 className="text-4xl text-white ">CipherHub</h1>
-        <h1 id="plain" className="text-3xl text-white mt-[2%] ">Ciphers and Encryption</h1>
+      <motion.section initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 0.5}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+        <div className="flex flex-row align-middle justify-center text-center min-h-[100%] min-w-[75%] ">
+          <div className="flex flex-row align-middle justify-start text-start min-h-[100%] min-w-[35%]  ">
+            <h1 className="text-4xl text-white">CipherHub</h1>
+          </div>
+        </div>
+        <div className="flex flex-row align-middle justify-center text-center min-h-[100%] min-w-[75%]">
+          <div className="flex flex-row align-middle justify-start text-start min-h-[100%] min-w-[35%] ">
+            <h1 className="text-3xl text-gray-300">Ciphers and Encryption</h1>
+          </div>
+        </div>
+        <div className="flex flex-row align-middle justify-evenly mt-[4%] text-center min-w-[100%] max-w-[100%] min-h-[35%] ">
+          <div className="flex flex-row align-middle justify-evenly text-center min-w-[50%] max-w-[50%] min-h-[100%]">
+            <motion.a initial={{scale: 1}} whileHover={{scale: 0.9}} whileTap={{scale: 1.1}} href="#item2" className="cursor-pointer z-[200] text-2xl text-white underline underline-offset-5 ">HMAC Hashes</motion.a>
+            <motion.a initial={{scale: 1}} whileHover={{scale: 0.9}} whileTap={{scale: 1.1}} href="#item3" className="cursor-pointer z-[200] text-2xl text-white underline underline-offset-5 ">RSA keys</motion.a>
+            <motion.a initial={{scale: 1}} whileHover={{scale: 0.9}} whileTap={{scale: 1.1}} href="#item4" className="cursor-pointer z-[200] text-2xl text-white underline underline-offset-5 ">AES Encryption</motion.a>
+          </div>
+        </div>
       </motion.section>
-      <motion.section id="item1" initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item1" initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 0.5}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+        <div className="flex flex-row align-middle justify-center text-center min-h-[50%] min-w-[75%] ">
+          <div className="flex flex-row align-middle justify-start text-start min-h-[100%] min-w-[75%]  ">
+            <h1 className="text-4xl text-white">About CipherHub</h1>
+          </div>
+        </div>
+      </motion.section>
+      <motion.section id="item2" initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 
       </motion.section>
-      <motion.section id="item2" initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item3" initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 
       </motion.section>
-      <motion.section id="item3" initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
-
-      </motion.section>
-      <motion.section id="item4" initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item4" initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 
       </motion.section>
     </div>
