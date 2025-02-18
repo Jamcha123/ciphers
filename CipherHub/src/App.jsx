@@ -71,11 +71,11 @@ function AddTHREE(){
 function AddNavBar(){
   const [active, setActive] = useState(false); 
   return(
-    <div className="fixed w-[100%] h-[100%] m-auto p-[0] bg-transparent z-[200] flex flex-col align-middle justify-center text-center translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%] ">
+    <div className="fixed w-[100%] min-h-[5vh] max-h-[35vh] m-auto p-[0] bg-transparent z-[1000] flex flex-col align-middle justify-center text-center translate-x-[-50%] translate-y-[-50%] top-[15%] lg:top-[5%] left-[50%] ">
       <nav className="relative w-[100%] min-h-[5vh] max-h-[30vh] m-auto p-[0] flex flex-col align-middle justify-center text-center z-[100] ">
         <div className="flex flex-row align-middle justify-center text-center min-h-[5vh] min-w-[100%]">
           <ul className="flex flex-row align-middle justify-center text-center min-h-[100%] min-w-[25%] md:min-w-[50%] lg:min-w-[75%] ">
-            <div className="relative w-[fit-content] h-[100%] m-auto p-[0] flex lg:hidden flex-col align-middle justify-center text-center">
+            <div className="relative w-[25%] h-[100%] m-auto p-[0] flex lg:hidden flex-col align-middle justify-center text-center">
               <span style={{fontSize: 30 + "px"}} onClick={active? () => setActive(false) : () => setActive(true)} className="text-8xl cursor-pointer text-white material-symbols-outlined">
                 menu
               </span>
@@ -94,7 +94,7 @@ function AddNavBar(){
             </div>
           </ul>
           <ul className="flex flex-col align-middle justify-center text-center min-h-[100%] min-w-[75%] md:min-w-[50%] lg:min-w-[25%] ">
-            <div className="flex flex-row align-middle justify-evenly text-center min-h-[50%] min-w-[100%] ">
+            <div className="flex flex-row align-middle justify-evenly text-center min-h-[50%] min-w-[75%] ">
               <img src={git} className="cursor-pointer" onClick={() => {window.location.href = "https://github.com/jamcha123/ciphers"}} width="35px" height="35px" alt="" />
               <div className="flex flex-col align-middle justify-center text-center min-h-[100%] min-w-[50%] ">
                 <iframe className="cursor-pointer bg-gray-600 rounded-xl text-3xl" src="https://github.com/sponsors/Jamcha123/button" title="Sponsor Jamcha123" height="32" width="120"></iframe>
@@ -123,7 +123,6 @@ function AddNavBar(){
           </div>
         </motion.div>
       </nav>
-      <div className="w-[100%] h-[95vh] m-auto p-[0] relative "></div>
     </div>
   )
 }
@@ -141,28 +140,106 @@ function AddMain(){
             <h1 className="text-3xl text-gray-300">Ciphers and Encryption</h1>
           </div>
         </div>
-        <div className="flex flex-row align-middle justify-evenly mt-[4%] text-center min-w-[100%] max-w-[100%] min-h-[35%] ">
-          <div className="flex flex-row align-middle justify-evenly text-center min-w-[50%] max-w-[50%] min-h-[100%]">
-            <motion.a initial={{scale: 1}} whileHover={{scale: 0.9}} whileTap={{scale: 1.1}} href="#item2" className="cursor-pointer z-[200] text-2xl text-white underline underline-offset-5 ">HMAC Hashes</motion.a>
-            <motion.a initial={{scale: 1}} whileHover={{scale: 0.9}} whileTap={{scale: 1.1}} href="#item3" className="cursor-pointer z-[200] text-2xl text-white underline underline-offset-5 ">RSA keys</motion.a>
-            <motion.a initial={{scale: 1}} whileHover={{scale: 0.9}} whileTap={{scale: 1.1}} href="#item4" className="cursor-pointer z-[200] text-2xl text-white underline underline-offset-5 ">AES Encryption</motion.a>
-          </div>
-        </div>
       </motion.section>
-      <motion.section id="item1" initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 0.5}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
-        <div className="flex flex-row align-middle justify-center text-center min-h-[50%] min-w-[75%] ">
-          <div className="flex flex-row align-middle justify-start text-start min-h-[100%] min-w-[75%]  ">
+      <motion.section id="item1" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+        <div className="flex flex-row align-middle justify-center text-center min-h-[fit-content] min-w-[75%] ">
+          <div className="flex flex-row align-middle justify-center text-center min-h-[100%] min-w-[75%]  ">
             <h1 className="text-4xl text-white">About CipherHub</h1>
           </div>
         </div>
+        <div className="relative w-[75%] h-[75vh] m-auto p-[0] grid-cols-2 grid-rows-2 gap-[50px] flex flex-col align-middle justify-center xl:grid  ">
+          <motion.div className="relative w-[100%] h-[75%] m-auto p-[0] bg-transparent border-white border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
+              <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
+                <h1 className="text-3xl text-gray-200">Open Source</h1>
+              </div>
+            </div>
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
+              <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
+                <h1 className="text-xl text-gray-300 ">
+                  CipherHub is Open Source and Free.<br></br>
+                </h1>
+              </div>
+            </div>
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
+              <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
+                <h1 className="text-xl text-gray-300 ">
+                  Check out the Git Repo
+                </h1>
+                <a href="https://github.com/jamcha123/ciphers" className="text-xl ml-[1%] cursor-pointer text-violet-500 underline underline-offset-1">
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </motion.div>
+          <motion.div className="relative w-[100%] h-[75%] m-auto p-[0] bg-transparent border-green-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
+              <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
+                <h1 className="text-3xl text-gray-200">Buy me a coffee</h1>
+              </div>
+            </div>
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
+              <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
+                <h1 className="text-xl text-gray-300 ">
+                  Feel free to sponser me.<br></br>
+                </h1>
+              </div>
+            </div>
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
+              <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
+                <h1 className="text-xl text-gray-300 ">
+                  My Github Sponsor page:
+                </h1>
+                <a href="https://github.com/sponsors/jamcha123" className="text-xl text-violet-500 ml-[1%] underline underline-offset-1 ">Sponsor Page</a>
+              </div>
+            </div>
+          </motion.div>
+          <motion.div className="relative w-[100%] h-[75%] m-auto p-[0] bg-transparent border-red-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
+              <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
+                <h1 className="text-3xl text-gray-200">Encryption Methods</h1>
+              </div>
+            </div>
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
+              <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
+                <h1 className="text-xl text-gray-300 ">
+                  Keep your data safe from your Ex.
+                </h1>
+              </div>
+            </div>
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
+              <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
+                <h1 className="text-xl text-gray-300 ">
+                  Generate public-private keys and encrypt documents.<br></br>
+                  Or use AES to encrypt to encrypt documents
+                </h1>
+              </div>
+            </div>
+          </motion.div>
+          <motion.div className="relative w-[100%] h-[75%] m-auto p-[0] bg-transparent border-blue-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
+              <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
+                <h1 className="text-3xl text-gray-200">HMAC Hashes</h1>
+              </div>
+            </div>
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
+              <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
+                <h1 className="text-xl text-gray-300 ">
+                  CipherHub Also has HMAC Hashes.<br></br>
+                  Just enter a Key and some Plaintext and hash it.
+                </h1>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </motion.section>
-      <motion.section id="item2" initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item2" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 
       </motion.section>
-      <motion.section id="item3" initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item3" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 
       </motion.section>
-      <motion.section id="item4" initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item4" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 
       </motion.section>
     </div>
