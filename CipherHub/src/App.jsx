@@ -5,9 +5,9 @@ import {motion} from 'framer-motion'
 import crypto from 'crypto'
 import * as THREE from 'three'
 import git from './assets/git.svg'
-import {getFunctions, httpsCallable} from 'firebase/functions'
-
-httpsCallable(getFunctions())
+import axios from 'axios'; 
+import * as cheerio from 'cheerio'
+import jquery from 'jquery'
 
 function AddTHREE(){
   useEffect(() => {
@@ -81,16 +81,16 @@ function AddNavBar(){
               </span>
             </div>
             <div className="relative w-[fit-content] h-[100%] m-auto p-[0] hidden lg:flex flex-col align-middle justify-center text-center ">
-              <li className="text-2xl text-white"><a href="#item1">About CipherHub</a></li>
+              <li className="text-2xl text-white underline underline-offset-3"><a href="#item1">About CipherHub</a></li>
             </div>
             <div className="relative w-[fit-content] h-[100%] m-auto p-[0] hidden lg:flex flex-col align-middle justify-center text-center ">
-              <li className="text-2xl text-white"><a href="#item2">HMAC Hashes</a></li>
+              <li className="text-2xl text-white underline underline-offset-3"><a href="#item2">HMAC Hashes</a></li>
             </div>
             <div className="relative w-[fit-content] h-[100%] m-auto p-[0] hidden lg:flex flex-col align-middle justify-center text-center ">
-              <li className="text-2xl text-white"><a href="#item3">AES Encryption</a></li>
+              <li className="text-2xl text-white underline underline-offset-3"><a href="#item3">AES Encryption</a></li>
             </div>
             <div className="relative w-[fit-content] h-[100%] m-auto p-[0] hidden lg:flex flex-col align-middle justify-center text-center ">
-              <li className="text-2xl text-white"><a href="#item4">RSA Encryption</a></li>
+              <li className="text-2xl text-white underline underline-offset-3"><a href="#item4">Public-Private Keys</a></li>
             </div>
           </ul>
           <ul className="flex flex-col align-middle justify-center text-center min-h-[100%] min-w-[75%] md:min-w-[50%] lg:min-w-[25%] ">
@@ -104,22 +104,22 @@ function AddNavBar(){
         </div>
         <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 1}}>
           <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
-            <li className="text-2xl text-white list-none "><a href="#item1">About CipherHub</a></li>
+            <li className="text-2xl text-white list-none underline underline-offset-1 "><a href="#item1">About CipherHub</a></li>
           </div>
         </motion.div>
         <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 2}}>
           <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
-            <li className="text-2xl text-white list-none "><a href="#item2">Hmac Hashes</a></li>
+            <li className="text-2xl text-white list-none underline underline-offset-1 "><a href="#item2">Hmac Hashes</a></li>
           </div>
         </motion.div>
         <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 1}}>
           <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
-            <li className="text-2xl text-white list-none "><a href="#item3">AES Encryption</a></li>
+            <li className="text-2xl text-white list-none underline underline-offset-1 "><a href="#item3">AES Encryption</a></li>
           </div>
         </motion.div>
         <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 2}}>
           <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
-            <li className="text-2xl text-white list-none "><a href="#item4">RSA Encryption</a></li>
+            <li className="text-2xl text-white list-none underline underline-offset-1 "><a href="#item4">Public-Private Keys</a></li>
           </div>
         </motion.div>
       </nav>
@@ -127,9 +127,30 @@ function AddNavBar(){
   )
 }
 function AddMain(){
+  useEffect(() => {
+    const forms = document.getElementById("forms"); 
+    const text = document.getElementById("text1"); 
+    const plain = document.getElementById("plain"); 
+    const key = document.getElementById("key"); 
+
+    forms.addEventListener("submit", async (e) => {
+      e.preventDefault(); 
+      jquery("#text1").empty(); 
+
+      const link = "https://hmac-mfkmp3s2rq-uc.a.run.app?key=" + key.value + "&text=" + plain.value + ""
+      const data = await axios.get(link)
+
+      let x = document.createElement("h2"); 
+      x.innerText = data["data"] 
+      text.appendChild(x); 
+
+      plain.value = ""
+      key.value = ""
+    })
+  })
   return(
     <div className="relative w-[100%] h-[100%] m-auto p-[0] bg-transparent ">
-      <motion.section initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 0.5}} className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section initial={{translateX: -100 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 0.5}} className="flex flex-col align-middle justify-center text-center min-h-[90vh] min-w-[100%] " >
         <div className="flex flex-row align-middle justify-center text-center min-h-[100%] min-w-[75%] ">
           <div className="flex flex-row align-middle justify-start text-start min-h-[100%] min-w-[35%]  ">
             <h1 className="text-4xl text-white">CipherHub</h1>
@@ -141,14 +162,14 @@ function AddMain(){
           </div>
         </div>
       </motion.section>
-      <motion.section id="item1" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item1" className="flex flex-col align-middle justify-center text-center min-h-[80vh] min-w-[100%] " >
         <div className="flex flex-row align-middle justify-center text-center min-h-[fit-content] min-w-[75%] ">
           <div className="flex flex-row align-middle justify-center text-center min-h-[100%] min-w-[75%]  ">
             <h1 className="text-4xl text-white">About CipherHub</h1>
           </div>
         </div>
         <div className="relative w-[75%] h-[75vh] m-auto p-[0] grid-cols-2 grid-rows-2 gap-[50px] flex flex-col align-middle justify-center xl:grid  ">
-          <motion.div className="relative w-[100%] h-[75%] m-auto p-[0] bg-transparent border-white border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+          <motion.div className="relative w-[80%] h-[75%] m-auto p-[0] bg-transparent border-white border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
                 <h1 className="text-3xl text-gray-200">Open Source</h1>
@@ -172,7 +193,7 @@ function AddMain(){
               </div>
             </div>
           </motion.div>
-          <motion.div className="relative w-[100%] h-[75%] m-auto p-[0] bg-transparent border-green-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+          <motion.div className="relative w-[80%] h-[75%] m-auto p-[0] bg-transparent border-green-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
                 <h1 className="text-3xl text-gray-200">Buy me a coffee</h1>
@@ -194,7 +215,7 @@ function AddMain(){
               </div>
             </div>
           </motion.div>
-          <motion.div className="relative w-[100%] h-[75%] m-auto p-[0] bg-transparent border-red-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+          <motion.div className="relative w-[80%] h-[75%] m-auto p-[0] bg-transparent border-red-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
                 <h1 className="text-3xl text-gray-200">Encryption Methods</h1>
@@ -216,7 +237,7 @@ function AddMain(){
               </div>
             </div>
           </motion.div>
-          <motion.div className="relative w-[100%] h-[75%] m-auto p-[0] bg-transparent border-blue-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+          <motion.div className="relative w-[80%] h-[75%] m-auto p-[0] bg-transparent border-blue-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
                 <h1 className="text-3xl text-gray-200">HMAC Hashes</h1>
@@ -234,7 +255,19 @@ function AddMain(){
         </div>
       </motion.section>
       <motion.section id="item2" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
-
+        <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
+          <div className="flex flex-row align-middle justify-center text-center min-w-[50%] min-h-[fit-content] ">
+            <h1 className="text-4xl text-white">HMAC Hashes - SHA256 </h1>
+          </div>
+        </div>
+        <div className="flex flex-col align-middle justify-center text-center min-h-[50vh] min-w-[50%] ">
+          <div className="relative w-[100%] h-[45vh] m-auto p-[0] text-center " id="text1"></div>
+          <form action="" className="relative w-[75%] h-[5vh] m-auto p-[0] flex flex-row align-middle justify-center text-center " method='post' id="forms">
+            <input type="text" placeholder="enter plaintext here" id="plain" className="w-[50%] h-[100%] m-auto p-[0] relative text-center text-2xl text-white bg-transparent border-transparent  " />
+            <input type="text" placeholder="enter a key" id="key" className="w-[25%] relative h-[100%] m-auto p-[0] text-center text-2xl text-white bg-transparent border-transparent " />
+            <input type="submit" value="submit" id="submit" className="w-[25%] cursor-pointer relative h-[100%] m-auto p-[0] text-center text-2xl underline underline-offset-2 text-white bg-transparent border-transparent " />
+          </form>
+        </div>
       </motion.section>
       <motion.section id="item3" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 

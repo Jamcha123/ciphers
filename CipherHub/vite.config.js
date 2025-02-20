@@ -10,6 +10,12 @@ export default defineConfig({
       origin: true,
       credentials: true, 
       methods: "get"
+    },
+    proxy: {
+      "/api": {
+        target: "", 
+        changeOrigin: true, 
+      }
     }
   }
 })
