@@ -130,24 +130,57 @@ function AddNavBar(){
 }
 function AddMain(){
   useEffect(() => {
-    const forms = document.getElementById("forms1"); 
-    const text = document.getElementById("text1"); 
+    const forms1 = document.getElementById("forms1"); 
+    const text1 = document.getElementById("text1"); 
     const plain = document.getElementById("plain"); 
-    const key = document.getElementById("key"); 
+    const key1 = document.getElementById("key1"); 
 
-    forms.addEventListener("submit", async (e) => {
+    forms1.addEventListener("submit", async (e) => {
       e.preventDefault(); 
       jquery("#text1").empty(); 
 
-      const link = "https://hmac-mfkmp3s2rq-uc.a.run.app?key=" + key.value + "&text=" + plain.value + ""
+      const link = "https://hmac-mfkmp3s2rq-uc.a.run.app?key=" + key1.value + "&text=" + plain.value + ""
       const data = await axios.get(link)
 
       let x = document.createElement("h2"); 
       x.innerText = data["data"] 
-      text.appendChild(x); 
+      text1.appendChild(x); 
 
       plain.value = ""
-      key.value = ""
+      key1.value = ""
+    })
+    const forms2 = document.getElementById("forms2")
+    const plaintext = document.getElementById("plaintext1"); 
+    const key2 = document.getElementById("key2")
+    const [text2, text3] = [document.getElementById("text2"), document.getElementById("text3")]; 
+
+    forms2.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      jquery("#text2").empty()
+      jquery("#text3").empty()
+      if(key2.value == "" || plaintext.value == ""){
+        alert("key or plaintext is empty")
+        plaintext.value = ""
+        key2.value = ""
+      }else{
+        const link = "https://aes-mfkmp3s2rq-uc.a.run.app/?key=" + key2.value + "&text=" + plaintext.value + ""; 
+
+        const webby = await axios.get(link)
+        const $ = cheerio.load(webby["data"])
+        const data1 = $("p:first").text()
+        const data2 = $("p:last").text()
+  
+        const x = document.createElement("h3")
+        x.innerText = "ciphertext: " + data1.toString("utf-8")
+        text2.appendChild(x)
+  
+        const y = document.createElement("h3"); 
+        y.innerText = "plaintext: " + data2.toString("utf-8")
+        text3.appendChild(y)
+
+        plaintext.value = ""
+        key2.value = ""
+      }
     })
   })
   return(
@@ -264,7 +297,7 @@ function AddMain(){
           </motion.div>
         </div>
       </motion.section>
-      <motion.section id="item2" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+      <motion.section id="item2" className="flex flex-col align-middle justify-center text-center mt-[5%] min-h-[50vh] min-w-[100%] " >
         <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
           <div className="flex flex-col align-middle justify-center text-center min-w-[50%] min-h-[fit-content] ">
             <h1 className="text-4xl text-white">HMAC Hashes - SHA256 </h1><br></br>
@@ -275,23 +308,30 @@ function AddMain(){
           <form action="" className="relative w-[75%] h-[50vh] m-auto p-[0] flex flex-col align-middle justify-center text-center " method='post' id="forms1">
             <div className="relative w-[100%] h-[10vh] m-auto p-[0] text-center " id="text1"></div>
             <input type="text" placeholder="enter plaintext here" id="plain" className="w-[100%] h-[5vh] underline underline-offset-6 m-auto p-[0] relative text-center text-2xl text-gray-300 bg-transparent border-transparent  " />
-            <input type="text" placeholder="enter a key" id="key" className="w-[100%] relative h-[5vh] underline underline-offset-6 m-auto p-[0] text-center text-2xl text-gray-300 bg-transparent border-transparent " />
+            <input type="text" placeholder="enter a key" id="key1" className="w-[100%] relative h-[5vh] underline underline-offset-6 m-auto p-[0] text-center text-2xl text-gray-300 bg-transparent border-transparent " />
             <input type="submit" value="submit" id="submit" className="w-[100%] cursor-pointer relative h-[5vh] m-auto p-[0] text-center text-2xl underline underline-offset-2 text-white bg-transparent border-transparent " />
           </form>
         </div>
       </motion.section>
-      <motion.section id="item3" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
-        <div className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[100%]">
+      <motion.section id="item3" className="flex flex-col align-middle justify-center text-center min-h-[75vh] mt-[5%] min-w-[100%] " >
+        <div className="flex flex-col align-middle justify-center text-center min-w-[25%] min-h-[100%]">
           <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[15vh] ">
             <div className="flex flex-col align-middle justify-center text-center min-w-[fit-content] min-h-[100%] ">
               <h1 className="text-4xl text-white ">Symmetric Encryption - AES</h1>
             </div>
           </div>
-          <div id="text2" className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[70vh] ">
-
+          <div className="flex flex-col align-middle justify-evenly text-center min-w-[100%] min-h-[40vh] ">
+            <div id="text2" className="flex flex-row align-middle justify-center text-center min-h-[50%] min-w-[100%] ">
+            </div>
+            <div id="text3" className="flex flex-row align-middle justify-center text-center min-h-[50%] min-w-[100%] ">
+            </div>
           </div>
-          <form action="" method="post" id="forms2" className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[15vh] ">
-            <input type="text" id="plain2" className="relative w-[100%] h-[5vh] " placeholder="enter plaintext here" />
+          <form action="" method="post" id="forms2" className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[10vh] ">
+            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[5vh] ">
+              <input type="text" id="plaintext1" className="relative w-[25%] h-[5vh] m-auto p-[0] text-white text-center text-2xl border-transparent bg-transparent " placeholder="enter plaintext here" />
+              <input type="text" id="key2" className="relative w-[25%] h-[5vh] m-auto p-[0] text-white text-center text-2xl border-transparent bg-transparent " placeholder="enter AES key here" />
+            </div>
+            <input type="submit" className="w-[100%] cursor-pointer relative h-[5vh] m-auto p-[0] bg-transparent border-transparent underline-offset-2 underline text-2xl text-white " id="submit" value="submit" />
           </form>
         </div>
       </motion.section>
