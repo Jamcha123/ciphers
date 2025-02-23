@@ -1,5 +1,10 @@
 import * as functions from 'firebase-functions'; 
+import {onDocumentCreated} from 'firebase-functions/v2/firestore'
+import {getFirestore} from 'firebase-admin/firestore'
+import {initializeApp} from 'firebase-admin/app'
 import {createCipheriv, createDecipheriv, createHmac, generateKeyPair, createSign, randomBytes, scryptSync, pbkdf2} from 'crypto'; 
+
+initializeApp(); 
 
 export const aes = functions.https.onRequest({cors: true}, async (req, res) => {
     const key = scryptSync(req.query.key, "GfG", 32)
@@ -15,8 +20,9 @@ export const aes = functions.https.onRequest({cors: true}, async (req, res) => {
     return res.end() 
 })
 export const rsa_keys = functions.https.onRequest({cors: true}, async (req, res) => {    
+    const length = req.query.length
     generateKeyPair("rsa", {
-        modulusLength: 600,
+        modulusLength: Number.parseInt(length),
         publicKeyEncoding: {
             type: "pkcs1", 
             format: "pem", 
@@ -38,7 +44,7 @@ export const hmac = functions.https.onRequest({cors: true}, async (req, res) => 
     const text = req.query.text
 
     const encrypt = createHmac("sha256", key).update(text.toString()).digest("hex")
-
+                                        
     res.status(200).send(encrypt)
     return res.end()
 })

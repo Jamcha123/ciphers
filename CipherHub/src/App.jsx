@@ -87,7 +87,7 @@ function AddNavBar(){
               <li className="text-2xl text-white underline underline-offset-3"><a href="#item2">HMAC Hashes</a></li>
             </div>
             <div className="relative w-[fit-content] h-[100%] m-auto p-[0] hidden lg:flex flex-col align-middle justify-center text-center ">
-              <li className="text-2xl text-white underline underline-offset-3"><a href="#item3">AES Encryption</a></li>
+              <li className="text-2xl text-white underline underline-offset-3"><a href="#item3">Symmetric Encryption</a></li>
             </div>
             <div className="relative w-[fit-content] h-[100%] m-auto p-[0] hidden lg:flex flex-col align-middle justify-center text-center ">
               <li className="text-2xl text-white underline underline-offset-3"><a href="#item4">Public-Private Keys</a></li>
@@ -95,29 +95,31 @@ function AddNavBar(){
           </ul>
           <ul className="flex flex-col align-middle justify-center text-center min-h-[100%] min-w-[75%] md:min-w-[50%] lg:min-w-[25%] ">
             <div className="flex flex-row align-middle justify-evenly text-center min-h-[50%] min-w-[75%] ">
-              <img src={git} className="cursor-pointer" onClick={() => {window.location.href = "https://github.com/jamcha123/ciphers"}} width="35px" height="35px" alt="" />
+              <a href="https://github.com/jamcha123/ciphers">
+                <img src={git} className="cursor-pointer" width="30px" height="30px" alt="" />
+              </a>
               <div className="flex flex-col align-middle justify-center text-center min-h-[100%] min-w-[50%] ">
                 <iframe className="cursor-pointer bg-gray-600 rounded-xl text-3xl" src="https://github.com/sponsors/Jamcha123/button" title="Sponsor Jamcha123" height="32" width="120"></iframe>
               </div>
             </div>
           </ul>
         </div>
-        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 1}}>
+        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 0.5}}>
           <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
             <li className="text-2xl text-white list-none underline underline-offset-1 "><a href="#item1">About CipherHub</a></li>
           </div>
         </motion.div>
-        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 2}}>
+        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 1}}>
           <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
             <li className="text-2xl text-white list-none underline underline-offset-1 "><a href="#item2">Hmac Hashes</a></li>
           </div>
         </motion.div>
-        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 1}}>
+        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 0.5}}>
           <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
-            <li className="text-2xl text-white list-none underline underline-offset-1 "><a href="#item3">AES Encryption</a></li>
+            <li className="text-2xl text-white list-none underline underline-offset-1 "><a href="#item3">Symmetric Encryption</a></li>
           </div>
         </motion.div>
-        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 2}}>
+        <motion.div className="relative w-[100%] mt-[1%] h-[5vh] m-auto p-[0] flex lg:hidden align-middle justify-center text-center flex-col " initial={{translateX: -0 + "%"}} animate={{translateX: active? 0 + "%" : -100 + "%"}} transition={{type: "keyframes", duration: 1}}>
           <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[50%] ">
             <li className="text-2xl text-white list-none underline underline-offset-1 "><a href="#item4">Public-Private Keys</a></li>
           </div>
@@ -128,7 +130,7 @@ function AddNavBar(){
 }
 function AddMain(){
   useEffect(() => {
-    const forms = document.getElementById("forms"); 
+    const forms = document.getElementById("forms1"); 
     const text = document.getElementById("text1"); 
     const plain = document.getElementById("plain"); 
     const key = document.getElementById("key"); 
@@ -156,9 +158,16 @@ function AddMain(){
             <h1 className="text-4xl text-white">CipherHub</h1>
           </div>
         </div>
-        <div className="flex flex-row align-middle justify-center text-center min-h-[100%] min-w-[75%]">
+        <div className="flex flex-row align-middle justify-center text-center min-h-[25%] min-w-[75%]">
           <div className="flex flex-row align-middle justify-start text-start min-h-[100%] min-w-[35%] ">
             <h1 className="text-3xl text-gray-300">Ciphers and Encryption</h1>
+          </div>
+        </div>
+        <div className="flex xl:flex-row flex-colalign-middle justify-center text-center min-h-[75%] min-w-[75%] mt-[5%]">
+          <div className="flex xl:flex-row flex-col align-middle justify-evenly text-cemter min-h-[100%] min-w-[100%] ">
+            <a className="underline underline-offset-2 text-violet-400 text-2xl mt-[5%] xl:mt-[0%]  " href="#item2">HMAC Hashes</a>
+            <a className="underline underline-offset-2 text-violet-400 text-2xl mt-[5%] xl:mt-[0%]  " href="#item3">Symmetric encryption</a>
+            <a className="underline underline-offset-2 text-violet-400 text-2xl mt-[5%] xl:mt-[0%]  " href="#item4">Public - Private keys</a>
           </div>
         </div>
       </motion.section>
@@ -168,7 +177,7 @@ function AddMain(){
             <h1 className="text-4xl text-white">About CipherHub</h1>
           </div>
         </div>
-        <div className="relative w-[75%] h-[75vh] m-auto p-[0] grid-cols-2 grid-rows-2 gap-[50px] flex flex-col align-middle justify-center xl:grid  ">
+        <div className="relative w-[75%] h-[75vh] mt-[5%] xl:mt-[0%] m-auto p-[0] grid-cols-2 grid-rows-2 gap-[50px] flex flex-col align-middle justify-center xl:grid  ">
           <motion.div className="relative w-[80%] h-[75%] m-auto p-[0] bg-transparent border-white border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
@@ -179,6 +188,7 @@ function AddMain(){
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
                 <h1 className="text-xl text-gray-300 ">
                   CipherHub is Open Source and Free.<br></br>
+                  CipherHub uses the MIT license
                 </h1>
               </div>
             </div>
@@ -240,14 +250,14 @@ function AddMain(){
           <motion.div className="relative w-[80%] h-[75%] m-auto p-[0] bg-transparent border-blue-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-3xl text-gray-200">HMAC Hashes</h1>
+                <h1 className="text-3xl text-gray-200">Bugs and Errors</h1>
               </div>
             </div>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
                 <h1 className="text-xl text-gray-300 ">
-                  CipherHub Also has HMAC Hashes.<br></br>
-                  Just enter a Key and some Plaintext and hash it.
+                  Report any bugs to my Github Issues page.<br></br>
+                  <a className="underline underline-offset-2 text-2xl text-violet-500 " href="https://github.com/Jamcha123/ciphers/issues">Issues</a>
                 </h1>
               </div>
             </div>
@@ -256,21 +266,34 @@ function AddMain(){
       </motion.section>
       <motion.section id="item2" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
         <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
-          <div className="flex flex-row align-middle justify-center text-center min-w-[50%] min-h-[fit-content] ">
-            <h1 className="text-4xl text-white">HMAC Hashes - SHA256 </h1>
+          <div className="flex flex-col align-middle justify-center text-center min-w-[50%] min-h-[fit-content] ">
+            <h1 className="text-4xl text-white">HMAC Hashes - SHA256 </h1><br></br>
+            <a href="https://en.wikipedia.org/wiki/HMAC" className="text-2xl underline underline-offset-2 text-violet-400">HMAC wikipedia</a>
           </div>
         </div>
         <div className="flex flex-col align-middle justify-center text-center min-h-[50vh] min-w-[50%] ">
-          <div className="relative w-[100%] h-[45vh] m-auto p-[0] text-center " id="text1"></div>
-          <form action="" className="relative w-[75%] h-[5vh] m-auto p-[0] flex flex-row align-middle justify-center text-center " method='post' id="forms">
-            <input type="text" placeholder="enter plaintext here" id="plain" className="w-[50%] h-[100%] m-auto p-[0] relative text-center text-2xl text-white bg-transparent border-transparent  " />
-            <input type="text" placeholder="enter a key" id="key" className="w-[25%] relative h-[100%] m-auto p-[0] text-center text-2xl text-white bg-transparent border-transparent " />
-            <input type="submit" value="submit" id="submit" className="w-[25%] cursor-pointer relative h-[100%] m-auto p-[0] text-center text-2xl underline underline-offset-2 text-white bg-transparent border-transparent " />
+          <form action="" className="relative w-[75%] h-[50vh] m-auto p-[0] flex flex-col align-middle justify-center text-center " method='post' id="forms1">
+            <div className="relative w-[100%] h-[10vh] m-auto p-[0] text-center " id="text1"></div>
+            <input type="text" placeholder="enter plaintext here" id="plain" className="w-[100%] h-[5vh] underline underline-offset-6 m-auto p-[0] relative text-center text-2xl text-gray-300 bg-transparent border-transparent  " />
+            <input type="text" placeholder="enter a key" id="key" className="w-[100%] relative h-[5vh] underline underline-offset-6 m-auto p-[0] text-center text-2xl text-gray-300 bg-transparent border-transparent " />
+            <input type="submit" value="submit" id="submit" className="w-[100%] cursor-pointer relative h-[5vh] m-auto p-[0] text-center text-2xl underline underline-offset-2 text-white bg-transparent border-transparent " />
           </form>
         </div>
       </motion.section>
       <motion.section id="item3" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
+        <div className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[100%]">
+          <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[15vh] ">
+            <div className="flex flex-col align-middle justify-center text-center min-w-[fit-content] min-h-[100%] ">
+              <h1 className="text-4xl text-white ">Symmetric Encryption - AES</h1>
+            </div>
+          </div>
+          <div id="text2" className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[70vh] ">
 
+          </div>
+          <form action="" method="post" id="forms2" className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[15vh] ">
+            <input type="text" id="plain2" className="relative w-[100%] h-[5vh] " placeholder="enter plaintext here" />
+          </form>
+        </div>
       </motion.section>
       <motion.section id="item4" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
 
