@@ -8,6 +8,8 @@ import git from './assets/git.svg'
 import axios from 'axios'; 
 import * as cheerio from 'cheerio'
 import jquery from 'jquery'
+import fs from 'fs'
+import url from 'url'
 
 function AddTHREE(){
   useEffect(() => {
@@ -182,6 +184,25 @@ function AddMain(){
         key2.value = ""
       }
     })
+    const forms3 = document.getElementById("forms3")
+    const text4 = document.getElementById("text4")
+    forms3.addEventListener("submit", async (e) => {
+      e.preventDefault()
+      jquery("#text4").empty()
+      const links = "https://rsa-keys-mfkmp3s2rq-uc.a.run.app/?length=600"
+      
+      const webby = await axios.get(links)
+      const $ = cheerio.load(webby["data"])
+      
+      const x = document.createElement("h4");
+      x.innerText = $("p:first").text()
+
+      const y = document.createElement("h4"); 
+      y.innerText = $("p:last").text()
+
+      text4.appendChild(x)
+      text4.appendChild(y)
+    })
   })
   return(
     <div className="relative w-[100%] h-[100%] m-auto p-[0] bg-transparent ">
@@ -211,87 +232,87 @@ function AddMain(){
           </div>
         </div>
         <div className="relative w-[75%] h-[75vh] mt-[5%] xl:mt-[0%] m-auto p-[0] grid-cols-2 grid-rows-2 gap-[50px] flex flex-col align-middle justify-center xl:grid  ">
-          <motion.div className="relative w-[80%] h-[75%] m-auto p-[0] bg-transparent border-white border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+          <motion.div className="relative overflow-hidden w-[80%] h-[75%] m-auto p-[0] bg-transparent border-white border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-3xl text-gray-200">Open Source</h1>
+                <motion.h1 initial={{translateY: 200 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 1}} className="text-3xl text-gray-200">Open Source</motion.h1>
               </div>
             </div>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-xl text-gray-300 ">
+                <motion.h1 initial={{translateY: 150 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 2}} className="text-xl text-gray-300 ">
                   CipherHub is Open Source and Free.<br></br>
                   CipherHub uses the MIT license
-                </h1>
+                </motion.h1>
               </div>
             </div>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-xl text-gray-300 ">
+                <motion.h1 initial={{translateY: 100 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 3}} className="text-xl text-gray-300 ">
                   Check out the Git Repo
-                </h1>
-                <a href="https://github.com/jamcha123/ciphers" className="text-xl ml-[1%] cursor-pointer text-violet-500 underline underline-offset-1">
+                </motion.h1>
+                <motion.a initial={{translateY: 100 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 3}} href="https://github.com/jamcha123/ciphers" className="text-xl ml-[1%] cursor-pointer text-violet-500 underline underline-offset-1">
                   GitHub
-                </a>
+                </motion.a>
               </div>
             </div>
           </motion.div>
-          <motion.div className="relative w-[80%] h-[75%] m-auto p-[0] bg-transparent border-green-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+          <motion.div className="relative overflow-hidden w-[80%] h-[75%] m-auto p-[0] bg-transparent border-green-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-3xl text-gray-200">Buy me a coffee</h1>
+                <motion.h1 initial={{translateY: 200 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 1}} className="text-3xl text-gray-200">Buy me a coffee</motion.h1>
               </div>
             </div>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-xl text-gray-300 ">
+                <motion.h1 initial={{translateY: 150 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 2}} className="text-xl text-gray-300 ">
                   Feel free to sponser me.<br></br>
-                </h1>
+                </motion.h1>
               </div>
             </div>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-xl text-gray-300 ">
+                <motion.h1 initial={{translateY: 100 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 3}} className="text-xl text-gray-300 ">
                   My Github Sponsor page:
-                </h1>
-                <a href="https://github.com/sponsors/jamcha123" className="text-xl text-violet-500 ml-[1%] underline underline-offset-1 ">Sponsor Page</a>
+                </motion.h1>
+                <a href="https://github.com/sponsors/jamcha123" className="text-xl text-violet-400 ml-[1%] underline underline-offset-1 ">Sponsor Page</a>
               </div>
             </div>
           </motion.div>
-          <motion.div className="relative w-[80%] h-[75%] m-auto p-[0] bg-transparent border-red-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+          <motion.div className="relative overflow-hidden w-[80%] h-[75%] m-auto p-[0] bg-transparent border-red-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-3xl text-gray-200">Encryption Methods</h1>
+                <motion.h1 initial={{translateY: 200 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 1}} className="text-3xl text-gray-200">Encryption Methods</motion.h1>
               </div>
             </div>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-xl text-gray-300 ">
+                <motion.h1 initial={{translateY: 150 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 2}} className="text-xl text-gray-300 ">
                   Keep your data safe from your Ex.
-                </h1>
+                </motion.h1>
               </div>
             </div>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-xl text-gray-300 ">
-                  Generate public-private keys and encrypt documents.<br></br>
-                  Or use AES to encrypt to encrypt documents
-                </h1>
+                <motion.h1 initial={{translateY: 100 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 3}} className="text-xl text-gray-300 ">
+                  Generate public-private keys.<br></br>
+                  Or Encrypt using AES
+                </motion.h1>
               </div>
             </div>
           </motion.div>
-          <motion.div className="relative w-[80%] h-[75%] m-auto p-[0] bg-transparent border-blue-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
+          <motion.div className="relative overflow-hidden w-[80%] h-[75%] m-auto p-[0] bg-transparent border-blue-300 border-[1px] rounded-xl flex flex-col align-middle justify-center text-center " initial={{translateX: 0 + "%"}} whileInView={{translateX: 0 + "%"}} transition={{type: "keyframes", duration: 1.5}}>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-3xl text-gray-200">Bugs and Errors</h1>
+                <motion.h1 initial={{translateY: 200 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 1}} className="text-3xl text-gray-200">Bugs and Errors</motion.h1>
               </div>
             </div>
             <div className="flex flex-row align-middle justify-center text-center min-w-[100%] mt-[1%] min-h-[fit-content] ">
               <div className="flex flex-row align-middle justify-start text-start min-w-[90%] min-h-[fit-content] ">
-                <h1 className="text-xl text-gray-300 ">
+                <motion.h1 initial={{translateY: 150 + "%"}} whileInView={{translateY: 0 + "%"}} transition={{type: "spring", duration: 2}} className="text-xl text-gray-300 ">
                   Report any bugs to my Github Issues page.<br></br>
-                  <a className="underline underline-offset-2 text-2xl text-violet-500 " href="https://github.com/Jamcha123/ciphers/issues">Issues</a>
-                </h1>
+                  <a className="underline underline-offset-2 text-2xl text-violet-400 " href="https://github.com/Jamcha123/ciphers/issues">Issues</a>
+                </motion.h1>
               </div>
             </div>
           </motion.div>
@@ -300,16 +321,16 @@ function AddMain(){
       <motion.section id="item2" className="flex flex-col align-middle justify-center text-center mt-[5%] min-h-[50vh] min-w-[100%] " >
         <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[fit-content] ">
           <div className="flex flex-col align-middle justify-center text-center min-w-[50%] min-h-[fit-content] ">
-            <h1 className="text-4xl text-white">HMAC Hashes - SHA256 </h1><br></br>
-            <a href="https://en.wikipedia.org/wiki/HMAC" className="text-2xl underline underline-offset-2 text-violet-400">HMAC wikipedia</a>
+            <h1 className="text-3xl text-white">HMAC Hashes - SHA256 </h1><br></br>
+            <a href="https://en.wikipedia.org/wiki/HMAC" className="text-2xl underline underline-offset-2 text-violet-400">HMAC - Wikipedia</a>
           </div>
         </div>
         <div className="flex flex-col align-middle justify-center text-center min-h-[50vh] min-w-[50%] ">
           <form action="" className="relative w-[75%] h-[50vh] m-auto p-[0] flex flex-col align-middle justify-center text-center " method='post' id="forms1">
             <div className="relative w-[100%] h-[10vh] m-auto p-[0] text-center " id="text1"></div>
-            <input type="text" placeholder="enter plaintext here" id="plain" className="w-[100%] h-[5vh] underline underline-offset-6 m-auto p-[0] relative text-center text-2xl text-gray-300 bg-transparent border-transparent  " />
-            <input type="text" placeholder="enter a key" id="key1" className="w-[100%] relative h-[5vh] underline underline-offset-6 m-auto p-[0] text-center text-2xl text-gray-300 bg-transparent border-transparent " />
-            <input type="submit" value="submit" id="submit" className="w-[100%] cursor-pointer relative h-[5vh] m-auto p-[0] text-center text-2xl underline underline-offset-2 text-white bg-transparent border-transparent " />
+            <input required type="text" placeholder="enter plaintext here" id="plain" className="w-[100%] h-[5vh] underline underline-offset-6 m-auto p-[0] relative text-center text-2xl text-gray-300 bg-transparent border-transparent  " />
+            <input required type="text" placeholder="enter a key" id="key1" className="w-[100%] relative h-[5vh] underline underline-offset-6 m-auto p-[0] text-center text-2xl text-gray-300 bg-transparent border-transparent " />
+            <input type="submit" value="submit" id="submit" className="w-[100%] cursor-pointer relative h-[5vh] m-auto p-[0] text-center text-2xl underline underline-offset-2 text-gray-300 bg-transparent border-transparent " />
           </form>
         </div>
       </motion.section>
@@ -317,26 +338,36 @@ function AddMain(){
         <div className="flex flex-col align-middle justify-center text-center min-w-[25%] min-h-[100%]">
           <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[15vh] ">
             <div className="flex flex-col align-middle justify-center text-center min-w-[fit-content] min-h-[100%] ">
-              <h1 className="text-4xl text-white ">Symmetric Encryption - AES</h1>
+              <h1 className="text-3xl text-white ">Symmetric Encryption - AES</h1>
+              <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" className="text-2xl mt-[5%] text-violet-400 underline underline-offset-2">AES Encryption - Wikipedia</a>
             </div>
           </div>
-          <div className="flex flex-col align-middle justify-evenly text-center min-w-[100%] min-h-[40vh] ">
+          <div className="flex flex-col align-middle justify-evenly text-center min-w-[100%] min-h-[25vh] ">
             <div id="text2" className="flex flex-row align-middle justify-center text-center min-h-[50%] min-w-[100%] ">
             </div>
             <div id="text3" className="flex flex-row align-middle justify-center text-center min-h-[50%] min-w-[100%] ">
             </div>
           </div>
-          <form action="" method="post" id="forms2" className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[10vh] ">
-            <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[5vh] ">
-              <input type="text" id="plaintext1" className="relative w-[25%] h-[5vh] m-auto p-[0] text-white text-center text-2xl border-transparent bg-transparent " placeholder="enter plaintext here" />
-              <input type="text" id="key2" className="relative w-[25%] h-[5vh] m-auto p-[0] text-white text-center text-2xl border-transparent bg-transparent " placeholder="enter AES key here" />
+          <form action="" method="post" id="forms2" className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[35vh] ">
+            <div className="flex flex-col align-middle justify-evenly text-center min-w-[100%] min-h-[25vh] ">
+              <input required type="text" id="plaintext1" className="relative w-[25%] h-[5vh] m-auto p-[0] text-white text-center text-2xl border-transparent bg-transparent " placeholder="enter plaintext here" />
+              <input required type="text" id="key2" className="relative w-[25%] h-[5vh] m-auto p-[0] text-white text-center text-2xl border-transparent bg-transparent " placeholder="enter AES key here" />
             </div>
-            <input type="submit" className="w-[100%] cursor-pointer relative h-[5vh] m-auto p-[0] bg-transparent border-transparent underline-offset-2 underline text-2xl text-white " id="submit" value="submit" />
+            <input type="submit" className="w-[100%] cursor-pointer relative h-[10vh] m-auto p-[0] bg-transparent border-transparent underline-offset-2 underline text-2xl text-gray-300 " id="submit" value="submit" />
           </form>
         </div>
       </motion.section>
-      <motion.section id="item4" className="flex flex-col align-middle justify-center text-center min-h-[100vh] min-w-[100%] " >
-
+      <motion.section id="item4" className="flex flex-col mt-[5%] align-middle justify-center text-center min-h-[40vh] min-w-[100%] " >
+        <div className="flex flex-row align-middle justify-center text-center min-w-[100%] min-h-[10vh] ">
+          <div className="flex flex-col align-middle justify-center text-center min-w-[50%] min-h-[100%] ">
+            <h1 className="text-3xl text-white ">Public - Private Keys</h1>
+            <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem) " className="text-2xl mt-[5%] text-violet-400 underline underline-offset-2 ">RSA - Wikipedia </a>
+          </div>
+        </div>
+        <div className="flex flex-col align-middle justify-center text-center min-h-[20vh] min-w-[100%] " id="text4"></div>
+        <form action="" id="forms3" method="get" className="flex mt-[10%] flex-col align-middle justify-center text-center min-w-[100%] min-h-[5vh] ">
+          <input type="submit" id="submit" className="relative cursor-pointer w-[100%] h-[5vh] m-auto p-[0] bg-transparent border-transparent text-2xl underline text-gray-300  " value="Generate Keys" />
+        </form>
       </motion.section>
     </div>
   )
