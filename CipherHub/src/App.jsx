@@ -137,9 +137,12 @@ function AddMain(){
     const plain = document.getElementById("plain"); 
     const key1 = document.getElementById("key1"); 
 
+    let active1 = false
     forms1.addEventListener("submit", async (e) => {
+      console.log(active1)
+      if (active1 === true) return; 
       e.preventDefault(); 
-      jquery("#text1").empty(); 
+      jquery("#text1").empty();
 
       const link = "https://hmac-mfkmp3s2rq-uc.a.run.app?key=" + key1.value + "&text=" + plain.value + ""
       const data = await axios.get(link)
@@ -150,13 +153,19 @@ function AddMain(){
 
       plain.value = ""
       key1.value = ""
+
+      active1 = true
+      setTimeout(() => {active1 = false}, 3000); 
     })
     const forms2 = document.getElementById("forms2")
     const plaintext = document.getElementById("plaintext1"); 
     const key2 = document.getElementById("key2")
     const [text2, text3] = [document.getElementById("text2"), document.getElementById("text3")]; 
 
+    let active2 = false
     forms2.addEventListener("submit", async (e) => {
+      if(active2 === true) return; 
+      console.log(active2)
       e.preventDefault();
       jquery("#text2").empty()
       jquery("#text3").empty()
@@ -182,11 +191,16 @@ function AddMain(){
 
         plaintext.value = ""
         key2.value = ""
+
+        active2 = true; 
+        setTimeout(() => {active2 = false}, 3000)
       }
     })
+    let active3 = false
     const forms3 = document.getElementById("forms3")
     const text4 = document.getElementById("text4")
     forms3.addEventListener("submit", async (e) => {
+      if(active3 === true) return; 
       e.preventDefault()
       jquery("#text4").empty()
       const links = "https://rsa-keys-mfkmp3s2rq-uc.a.run.app/?length=600"
@@ -202,6 +216,10 @@ function AddMain(){
 
       text4.appendChild(x)
       text4.appendChild(y)
+
+
+      active3 = true; 
+      setTimeout(() => {active3 = false}, 3000)
     })
   })
   return(
